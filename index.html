@@ -170,6 +170,88 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://y0f.github.io/2021/07/29/%E8%AE%A4%E8%AF%86FastCGI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="cy0u">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="y0f">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/29/%E8%AE%A4%E8%AF%86FastCGI/" class="post-title-link" itemprop="url">认识FastCGI</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-07-29 09:42:13 / 修改时间：09:50:22" itemprop="dateCreated datePublished" datetime="2021-07-29T09:42:13+08:00">2021-07-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="什么是CGI"><a href="#什么是CGI" class="headerlink" title="什么是CGI"></a>什么是CGI</h4><p>CGI全称”通用网关接口”（Common Gateway Interface），用于HTTP服务器与其它机器上的程序服务通信交流的一种工具，CGI程序须运行在网络服务器上。</p>
+<p>传统CGI接口方式的主要缺点是性能较差，因为每次HTTP服务器遇到动态程序时都需要重启解析器来执行解析，然后结果被返回给HTTP服务器。这在处理高并发访问几乎是不可用的，因此就诞生了FastCGI。另外传统的CGI接口方式安全性也很差。</p>
+<h4 id="什么是FastCGI"><a href="#什么是FastCGI" class="headerlink" title="什么是FastCGI"></a>什么是FastCGI</h4><p>FastCGI是一个可伸缩地、高速地在HTTP服务器和动态脚本语言间通信的接口（FastCGI接口在Linux下是socket（可以是文件socket，也可以是ip socket）），主要优点是把动态语言和HTTP服务器分离开来。多数流行的HTTP服务器都支持FastCGI，包括Apache、Nginx和lightpd。</p>
+<p>同时，FastCGI也被许多脚本语言所支持，比较流行的脚本语言之一为PHP。FastCGI接口方式采用C/S架构，可以将HTTP服务器和脚本解析服务器分开，同时在脚本解析服务器上启动一个或多个脚本解析守护进程。当HTTP服务器每次遇到动态程序时，可以将其直接交付给FastCGI进程执行，然后将得到的结构返回给浏览器。这种方式可以让HTTP服务器专一地处理静态请求或者将动态脚本服务器的结果返回给客户端，这在很大程度上提高了整个应用系统的性能。</p>
+<p>FastCGI的重要特点：</p>
+<ul>
+<li>1、FastCGI是HTTP服务器和动态脚本语言间通信的接口或者工具。</li>
+<li>2、FastCGI优点是把动态语言解析和HTTP服务器分离开来。</li>
+<li>3、Nginx、Apache、Lighttpd以及多数动态语言都支持FastCGI。</li>
+<li>4、FastCGI接口方式采用C/S架构，分为客户端（HTTP服务器）和服务端（动态语言解析服务器）。</li>
+<li>5、PHP动态语言服务端可以启动多个FastCGI的守护进程。</li>
+<li>6、HTTP服务器通过FastCGI客户端和动态语言FastCGI服务端通信。</li>
+</ul>
+<h4 id="Nginx-FastCGI的运行原理"><a href="#Nginx-FastCGI的运行原理" class="headerlink" title="Nginx FastCGI的运行原理"></a>Nginx FastCGI的运行原理</h4><p>Nginx不支持对外部动态程序的直接调用或者解析，所有的外部程序（包括PHP）必须通过FastCGI接口来调用。FastCGI接口在Linux下是socket（可以是文件socket，也可以是ip socket）。为了调用CGI程序，还需要一个FastCGI的wrapper，这个wrapper绑定在某个固定socket上，如端口或者文件socket。当Nginx将CGI请求发送给这个socket的时候，通过FastCGI接口，wrapper接收到请求，然后派生出一个新的线程，这个线程调用解释器或者外部程序处理脚本并读取返回数据；接着，wrapper再将返回的数据通过FastCGI接口，沿着固定的socket传递给Nginx；最后，Nginx将返回的数据发送给客户端，这就是Nginx+FastCGI的整个运作过程。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/5350978-fcd13cc99e17f59a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/665/format/webp" alt="img"></p>
+<center>Nginx+FastCGI运作过程</center>
+
+<p>FastCGI的主要优点是把动态语言和HTTP服务器分离开来，是Nginx专一处理静态请求和向后转发动态请求，而PHP/PHP-FPM服务器专一解析PHP动态请求。</p>
+<h4 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h4><p><img src="https://upload-images.jianshu.io/upload_images/5350978-80e34139127e6f58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/723/format/webp" alt="img"></p>
+<center>ngnix配置解释</center>
+
+
+
+<p>作者：硌手小石头<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/565217337247">https://www.jianshu.com/p/565217337247</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://y0f.github.io/2021/07/26/%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -431,7 +513,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
