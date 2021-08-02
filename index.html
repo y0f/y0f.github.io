@@ -195,7 +195,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-08-02 10:04:08 / 修改时间：10:21:40" itemprop="dateCreated datePublished" datetime="2021-08-02T10:04:08+08:00">2021-08-02</time>
+              <time title="创建时间：2021-08-02 10:04:08 / 修改时间：10:22:24" itemprop="dateCreated datePublished" datetime="2021-08-02T10:04:08+08:00">2021-08-02</time>
             </span>
 
           
@@ -211,18 +211,14 @@
       
           <p>在uni-app中引入了element-ui后作为手机端ui实现，最近提了一个需求，要做一个公告栏弹框。</p>
 <p><img src="img%5CQQ%E6%88%AA%E5%9B%BE20210802100905.png" alt="QQ截图20210802100905"></p>
-<p>在编写代码的时候，就使用了官方的示例。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-button type=&quot;text&quot; @click=&quot;open&quot;&gt;点击打开 Message Box&lt;/el-button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    methods: &#123;</span><br><span class="line">      open() &#123;</span><br><span class="line">        this.$alert(&#x27;这是一段内容&#x27;, &#x27;标题名称&#x27;, &#123;</span><br><span class="line">          confirmButtonText: &#x27;确定&#x27;,</span><br><span class="line">          callback: action =&gt; &#123;</span><br><span class="line">            this.$message(&#123;</span><br><span class="line">              type: &#x27;info&#x27;,</span><br><span class="line">              message: `action: $&#123; action &#125;`</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<p>但是在显示上，想修改这个MessageBox的width时，一直不能生效。后来发现了一个问题，uni-app的这个style需要在app.vue的文件中添加样式才能修改MessageBox的样式。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">this.$alert(this.notice, &#x27;公告&#x27;, &#123;</span><br><span class="line">	// 自定义样式</span><br><span class="line">	customClass: &#x27;el-alert-width&#x27;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>app.vue</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">	<span class="selector-class">.el-alert-width</span>&#123;</span><br><span class="line">		<span class="attribute">width</span>: <span class="number">90%</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/02/uni-app%E4%BD%BF%E7%94%A8element-ui%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
