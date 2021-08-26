@@ -195,7 +195,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-08-02 10:04:08 / 修改时间：11:27:39" itemprop="dateCreated datePublished" datetime="2021-08-02T10:04:08+08:00">2021-08-02</time>
+              <time title="创建时间：2021-08-02 10:04:08 / 修改时间：11:38:00" itemprop="dateCreated datePublished" datetime="2021-08-02T10:04:08+08:00">2021-08-02</time>
             </span>
 
           
@@ -210,7 +210,7 @@
 
       
           <p>在uni-app中引入了element-ui后作为手机端ui实现，最近提了一个需求，要做一个公告栏弹框。</p>
-<p><img src="http://img.cy0u.top/QQ%E6%88%AA%E5%9B%BE20210802100905.png" alt="QQ截图20210802100905"></p>
+<p><img src="https://img.cy0u.top/QQ%E6%88%AA%E5%9B%BE20210802100905.png" alt="QQ截图20210802100905"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/08/02/uni-app%E4%BD%BF%E7%94%A8element-ui%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F/#more" rel="contents">
@@ -404,10 +404,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-07-26 08:40:34 / 修改时间：08:40:56" itemprop="dateCreated datePublished" datetime="2021-07-26T08:40:34+08:00">2021-07-26</time>
+              <time title="创建时间：2021-07-26 08:40:34" itemprop="dateCreated datePublished" datetime="2021-07-26T08:40:34+08:00">2021-07-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-26 14:13:55" itemprop="dateModified" datetime="2021-08-26T14:13:55+08:00">2021-08-26</time>
+              </span>
 
           
 
@@ -421,23 +427,14 @@
 
       
           <h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><h2 id="删除多余容器"><a href="#删除多余容器" class="headerlink" title="删除多余容器"></a>删除多余容器</h2><p>杀死所有正在运行的容器<br><code>docker kill $(docker ps -a -q)</code></p>
-<p>删除所有已经停止的容器</p>
-<p><code>docker rm $(docker ps -a -q)</code></p>
-<p>删除所有未打 dangling 标签的镜像</p>
-<p><code>docker rmi $(docker images -q -f dangling=true)</code></p>
-<p>删除所有镜像</p>
-<p><code>docker rmi $(docker images -q)</code></p>
-<p>强制删除镜像名称中包含“doss-api”的镜像</p>
-<p><code>docker rmi --force $(docker images | grep doss-api | awk &#39;&#123;print $3&#125;&#39;)</code></p>
-<p>删除所有未使用数据</p>
-<p><code>docker system prune</code></p>
-<p>只删除未使用的volumes</p>
-<p><code>docker volume prune</code></p>
-<h2 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h2><p>使用命令<code>docker exec -it [容器名] /bin/bash</code></p>
-<h1 id="linux抓包"><a href="#linux抓包" class="headerlink" title="linux抓包"></a>linux抓包</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chyingp/p/linux-command-tcpdump.html">Linux基础：用tcpdump抓包 - 程序猿小卡 - 博客园 (cnblogs.com)</a></p>
-<p>抓取docker0网络的流量保存到/tmp目录下docker0.cap文件中</p>
-<p><code>tcpdump -i docker0 -w /tmp/docker0.cap</code></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/07/26/%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
