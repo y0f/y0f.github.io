@@ -1,4 +1,4 @@
 
-#y0f
+y0f
 
 https://y0f.github.io
