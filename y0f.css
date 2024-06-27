@@ -1,11 +1,11 @@
 body {
+  --bg-opacity: 0.8;
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
   color: black;
   position: relative;
   min-height: 100vh;
-  --bg-opacity: 0.8;
 }
 
 body::before {
@@ -38,6 +38,8 @@ body::after {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 pre {
@@ -47,12 +49,15 @@ pre {
   line-height: 8px;
   letter-spacing: 3.4px;
   background: rgba(0, 0, 0, 0.6);
+  font-family: Gill Sans", sans-serif;
 }
 
 .slider-container {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  position: relative;
+  z-index: 2; 
 }
 
 .slider-container input[type="range"] {
@@ -81,20 +86,35 @@ pre {
   cursor: pointer;
 }
 
+@media (max-width: 1024px) {
+  pre {
+    font-size: 6px;
+    line-height: 6px;
+    letter-spacing: 2.8px;
+  }
+}
+
+@media (max-width: 800px) {
+  pre {
+    font-size: 4px;
+    line-height: 4px;
+    letter-spacing: 2.4px;
+  }
+}
+
 @media (max-width: 600px) {
-  pre {
-      font-size: 2px;
-      line-height: 3px;
-      letter-spacing: 2px;
-  }
   .ascii-art {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      padding-top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 5rem;
   }
+
   pre {
-      text-align: center;
+    font-size: 2px;
+    line-height: 3px;
+    letter-spacing: 2px;
+    text-align: center;
   }
 }
